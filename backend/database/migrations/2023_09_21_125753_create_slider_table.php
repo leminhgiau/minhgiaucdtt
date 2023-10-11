@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('db_slider', function (Blueprint $table) {
             $table->id();
             $table->string('name',1000);
+            $table->string('image',1000);
             $table->string('link',1000);
-            $table->unsignedTinyInteger('sort_order');
+            $table->unsignedInteger('sort_order');
             $table->string('position');
+            $table->unsignedInteger('created_by')->default(1);
             $table->timestamps();
-            $table->unsignedInteger('create_by')->default(1);
-            $table->unsignedInteger('update_by')->nullable();
-            $table->unsignedTinyInteger('status')->default(2);
+            $table->unsignedInteger('updated_by')->nullable();
+            $table->tinyInteger('status')->default(2);
         });
     }
 

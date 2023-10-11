@@ -8,28 +8,25 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up():void
+    public function up(): void
     {
-        Schema::create('db_orderdetail', function (Blueprint $table) {
+        Schema::create('db_productstore', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('product_id');
             $table->double('price');
-            $table->unsignedInteger('qty');
-            $table->double('discount');
-            $table->double('amount');
+            $table->unsignedTinyInteger('qty');
+            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('update_by')->nullable();
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('db_orderdetail');
+        Schema::dropIfExists('db_productstore');
     }
 };

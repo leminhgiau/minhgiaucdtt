@@ -17,18 +17,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('brand_id');
-            $table->string('name',1000);
-            $table->string('slug',1000);
-            $table->float('price');
-            $table->float('price_sale');
-            $table->string('image',1000)->nullable();
-            $table->unsignedInteger('qty');
-            $table->mediumText('detail');
-            $table->string('metekey');
-            $table->string('metadesc');
-            $table->timestamps();
-            $table->unsignedInteger('create_by')->default(1);
+            $table->string("name");
+            $table->string("slug");
+            $table->string("image")->nullable();
+            $table->text("detail");
+            $table->string("description");
+            $table->double("price");
+
+            $table->unsignedInteger('created_by');
             $table->unsignedInteger('update_by')->nullable();
+            $table->timestamps();
             $table->unsignedTinyInteger('status')->default(2);
         });
     }

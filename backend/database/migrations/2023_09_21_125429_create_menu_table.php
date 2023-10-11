@@ -34,5 +34,17 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('db_menu');
-    }
+        $table->id();
+        $table->string("name");
+        $table->string("link");
+        $table->unsignedInteger('sort_order');
+        $table->unsignedInteger('table_id');
+        $table->unsignedInteger('parent_id');
+        $table->string("type");
+        $table->string("description");
+        $table->unsignedInteger('created_by');
+        $table->unsignedInteger('update_by')->nullable();
+        $table->timestamps();
+        $table->unsignedTinyInteger('status')->default(2);
+}
 };

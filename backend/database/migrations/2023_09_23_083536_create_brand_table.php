@@ -16,15 +16,14 @@ return new class extends Migration
     {
         Schema::create('db_brand',function(Blueprint $table){
             $table->id();
-            $table->string('name',1000);
-            $table->string('slug',1000);
-            $table->string('image',1000)->nullable();
-            $table->unsignedInteger('sort_order')->defaut(0);
-            $table->string('metakey');
-            $table->string('metadesc');
+            $table->string("name");
+            $table->string("slug");
+            $table->unsignedInteger('sort_order');
+            $table->string("description");
+            $table->string("image")->nullable();
+            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('update_by');
             $table->timestamps();
-            $table->unsignedInteger('create_by')->default(1);
-            $table->unsignedInteger('update_by')->nullable();
             $table->unsignedTinyInteger('status')->default(2);
         });
     }

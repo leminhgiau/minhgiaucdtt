@@ -8,20 +8,16 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('db_post', function (Blueprint $table) {
+        Schema::create('db_banner', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('topic_id')->nullable();
-            $table->string("title");
-            $table->string("slug");
-            $table->text("detail");
-            $table->string("description");
+            $table->string("name");
             $table->string("image");
-            $table->string("type")->default('post');
+            $table->string("link")->nullable();
+            $table->string("position");
+            $table->string("description");
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('update_by')->nullable();
             $table->timestamps();
@@ -31,11 +27,9 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('db_post');
+        Schema::dropIfExists('db_banner');
     }
 };
